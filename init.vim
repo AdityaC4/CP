@@ -30,11 +30,17 @@ nnoremap <C-f> :NERDTreeFocus<CR>
 noremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
+" caps to esc
+au VimEnter * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * silent! !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+
 " autocompile
 autocmd vimEnter *.cpp map <F9> :w <CR> :terminal g++ -std=c++17 -Wall % -o %:r && ./%:r <CR>
 
 "comment the line
 autocmd filetype cpp nnoremap <C-C> :s/^\(\s*\)/\1\/\/<CR> :s/^\(\s*\)\/\/\/\//\1<CR> $
+
+nnoremap <C-x> :%y+ <CR>
 
 
 
@@ -54,4 +60,3 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-
