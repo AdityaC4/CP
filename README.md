@@ -1,2 +1,2 @@
-# CP
-My competitive programming stuff
+# Competitive Programming
+
